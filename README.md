@@ -1,4 +1,5 @@
-# terraform-init-tests
+# terraform-first-steps
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
