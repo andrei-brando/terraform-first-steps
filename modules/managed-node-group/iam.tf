@@ -1,4 +1,4 @@
-resource "aws_iam_role" "eks_manage_node_group_role" {
+resource "aws_iam_role" "eks_managed_node_group_role" {
   name = "${var.project_name}-mng-role"
 
   assume_role_policy = jsonencode({
@@ -24,16 +24,16 @@ resource "aws_iam_role" "eks_manage_node_group_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "eks_mng_role_attachment_worker" {
-  role       = aws_iam_role.eks_manage_node_group_role.name
+  role       = aws_iam_role.eks_managed_node_group_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
 resource "aws_iam_role_policy_attachment" "eks_mng_role_attachment_ecr" {
-  role       = aws_iam_role.eks_manage_node_group_role.name
+  role       = aws_iam_role.eks_managed_node_group_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly"
 }
 
 resource "aws_iam_role_policy_attachment" "eks_mng_role_attachment_cni" {
-  role       = aws_iam_role.eks_manage_node_group_role.name
+  role       = aws_iam_role.eks_managed_node_group_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
